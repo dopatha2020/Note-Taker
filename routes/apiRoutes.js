@@ -1,5 +1,5 @@
-var tableData = require("../data/tableData");
-var waitListData = require("../data/waitinglistData");
+var fs = require('fs');
+var path = require('path');
 
 module.exports = function(app) {
   app.get("/api/notes", function(req, res) {
@@ -16,7 +16,7 @@ module.exports = function(app) {
     updateDb();
     return console.log("Added new note: "+newNote.title);
   });
-  
+
   app.delete("/api/notes/:id", function(req, res) {
     notes.splice(req.params.id, 1);
     updateDb();

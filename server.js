@@ -1,6 +1,4 @@
 var express = require("express");
-var fs = require("fs");
-const path = require('path');
 
 var app = express();
 
@@ -12,9 +10,8 @@ app.use(express.static(__dirname));
 
 app.use(express.static("public"));
 
-require('./routes/routes')(app);
-require("./routes/apiRoutes.js")(app);
-require("./routes/htmlRoutes.js")(app);
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
